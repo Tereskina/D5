@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lit-everglades-84090.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['lit-everglades-84090.herokuapp.com', '127.0.0.1', 'localhost', ]
 
 
 # Application definition
@@ -82,6 +82,7 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 #     }
 # }
 
+import dj_database_url
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 # Password validation
