@@ -15,10 +15,14 @@ class Book(models.Model):
     copy_count = models.SmallIntegerField(default=1, blank=True, null=True)
     price = models.DecimalField(blank=True, null=True, decimal_places=2, max_digits=7)
     redaction = models.ForeignKey('Redaction', blank=True, null=True, on_delete=models.CASCADE, related_name='books')
+    friend = models.ForeignKey('Friend', blank=True, null=True, on_delete=models.CASCADE, related_name='books')
     def __str__(self): return self.title
 
 class Redaction(models.Model):
     name = models.CharField(max_length=128)
     def __str__(self): return self.name
 
+class Friend(models.Model):
+    name = models.CharField(max_length=40)
+    def __str__(self): return self.name
     

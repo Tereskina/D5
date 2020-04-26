@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.template import loader
 from django.forms import formset_factory
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 from django.http.response import HttpResponseRedirect
-from .models import Book, Author, Redaction
+from .models import Book, Author, Redaction, Friend
 from p_library.forms import AuthorForm, BookForm
 
 
@@ -25,6 +27,7 @@ def index(request):
     	"books": books,}
     return HttpResponse(template.render(biblio_data, request))
 
+@csrf_exempt
 def book_increment(request):
     if request.method == 'POST':
         book_id = request.POST['id']
@@ -40,7 +43,7 @@ def book_increment(request):
     else:
         return redirect('/index/')
 
-
+@csrf_exempt
 def book_decrement(request):
     if request.method == 'POST':
         book_id = request.POST['id']
@@ -116,3 +119,16 @@ def books_authors_create_many(request):
             'book_formset': book_formset,  
         }  
     )
+
+class BookFriendList(ListView):
+    template_name = 'book_friend_list.html'
+    context_object_name = "books"
+    model = Book
+
+class BookFriendUpdate(UpdateView):
+    model = Book
+    fields = ['title', 'author', 'description', 'friend']
+    success_url = reverse_lazy('p_library:book_friend_list') 
+    template_name = 'book_friend_update.html' 
+
+

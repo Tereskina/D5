@@ -1,5 +1,5 @@
 from django import forms
-from p_library.models import Author, Book, Redaction
+from p_library.models import Author, Book, Redaction, Friend
 from django.forms import formset_factory 
 
 class AuthorForm(forms.ModelForm):

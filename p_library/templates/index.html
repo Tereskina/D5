@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<title>My library</title>
 </head>
-<body>
+<body class="ml-5 mr-5">
 	<h1>Добро пожаловать в {{ title }}.</h1>
 	<br>
 	<!-- <p>Тут собрано {{ books_count }} книг из моей личной коллекции.</p> -->
@@ -51,13 +51,5 @@
 		</tbody>
 	    {% endfor %}
 	</table>
-	<p>
-		{% load my_filters %}
-		{% for i in 100|range_ %}
-			{% if i|div:3 %}
-				{{ i }}
-			{% endif %}
-		{% endfor %}
-	</p>
 </body>
 </html>

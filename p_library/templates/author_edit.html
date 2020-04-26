@@ -2,13 +2,15 @@
 <html lang="en">  
 <head>  
 	<meta charset="UTF-8">  
-	<title>Форма создания и редактирования Авторов</title>  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Форма создания и редактирования авторов</title>  
 </head>  
-<body>  
-<form method="post">  
+<body class="m-5">
+<h1>Форма создания и редактирования авторов</h1> 
+<form method="post" class="mt-5"> 
 	{% csrf_token %}  
 	{{ form.as_p }}  
-	<input type="submit" value="Сохранить">  
+	<input type="submit" value="Сохранить" class='btn btn-primary'>  
 </form>  
 </body>  
 </html>
