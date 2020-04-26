@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+# import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,13 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '=sc0vhu+j=2&#y*uc_g4d^o3_dxk)j(3i(6xsrwzvu-ku0%j#t'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '=sc0vhu+j=2&#y*uc_g4d^o3_dxk)j(3i(6xsrwzvu-ku0%j#t'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lit-everglades-84090.herokuapp.com', '127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,8 +82,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-
 # DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 # Password validation
@@ -124,4 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
