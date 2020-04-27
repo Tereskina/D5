@@ -18,11 +18,9 @@ python3 -m venv env
 
 source env/bin/activate
 
-cd my_site
-
-cd ../ 
-
 pip3 install -r requirements.txt
+
+cd my_site
 
 python manage.py runserver
 
