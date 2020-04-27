@@ -20,6 +20,8 @@ source env/bin/activate
 
 cd my_site
 
+cd ../ 
+
 pip3 install -r requirements.txt
 
 python manage.py runserver
