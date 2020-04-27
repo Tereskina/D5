@@ -4,7 +4,7 @@
 
 https://lit-everglades-84090.herokuapp.com
 
-(https://lit-everglades-84090.herokuapp.com/p/book_friend_list/ и другие urls из url.py)
+(https://lit-everglades-84090.herokuapp.com/p/book_friend_list/ и другие urls из urls.py)
 
 ***
 
