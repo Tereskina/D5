@@ -13,3 +13,8 @@ class BookForm(forms.ModelForm):
     class Meta:
         fields="__all__"
         model=Book
+
+class FriendForm(forms.ModelForm):
+    class Meta:
+        fields="__all__"
+        model=Friend

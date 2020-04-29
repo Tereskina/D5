@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 from django.http.response import HttpResponseRedirect
 from .models import Book, Author, Redaction, Friend
-from p_library.forms import AuthorForm, BookForm
+from p_library.forms import AuthorForm, BookForm, FriendForm
 
 
 # Create your views here.
@@ -98,32 +98,46 @@ def author_create_many(request):
 
 def books_authors_create_many(request):  
     AuthorFormSet = formset_factory(AuthorForm, extra=2)  
-    BookFormSet = formset_factory(BookForm, extra=2)  
+    BookFormSet = formset_factory(BookForm, extra=2)
+    FriendFormSet = formset_factory(FriendForm, extra=2)
     if request.method == 'POST':  
         author_formset = AuthorFormSet(request.POST, request.FILES, prefix='authors')  
-        book_formset = BookFormSet(request.POST, request.FILES, prefix='books')  
-        if author_formset.is_valid() and book_formset.is_valid():  
+        book_formset = BookFormSet(request.POST, request.FILES, prefix='books')
+        friend_formset = FriendFormSet(request.POST, request.FILES, prefix='friends')  
+        if author_formset.is_valid() and book_formset.is_valid() and friend_formset.is_valid():  
             for author_form in author_formset:  
                 author_form.save()  
             for book_form in book_formset:  
-                book_form.save()  
+                book_form.save()
+            for friend_form in friend_formset:
+                friend_form.save()  
             return HttpResponseRedirect(reverse_lazy('p_library:author_list'))  
     else:  
         author_formset = AuthorFormSet(prefix='authors')  
-        book_formset = BookFormSet(prefix='books')  
+        book_formset = BookFormSet(prefix='books')
+        friend_formset = FriendFormSet(prefix='friends')  
     return render(
         request,  
         'manage_books_authors.html',  
         {  
             'author_formset': author_formset,  
-            'book_formset': book_formset,  
+            'book_formset': book_formset,
+            'friend_formset': friend_formset,  
         }  
     )
+
+class FriendEdit(CreateView):  
+    model = Friend  
+    form_class = FriendForm  
+    success_url = reverse_lazy('p_library:book_friend_list')  
+    template_name = 'friend_edit.html'
+
 
 class BookFriendList(ListView):
     template_name = 'book_friend_list.html'
     context_object_name = "books"
     model = Book
+
 
 class BookFriendUpdate(UpdateView):
     model = Book
