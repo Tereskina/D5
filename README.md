@@ -4,6 +4,8 @@
 
 https://lit-everglades-84090.herokuapp.com
 
+https://lit-everglades-84090.herokuapp.com/p/friend/create - форма для добавления друга
+
 (https://lit-everglades-84090.herokuapp.com/p/book_friend_list/ и другие urls из urls.py)
 
 ***
